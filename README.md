@@ -1,12 +1,12 @@
-=== Dropwizard Sample ===
+# Dropwizard Sample
 
 http://www.dropwizard.io
 
 
-== Run application: ==
+## Run application:
 
-Just run `.gradlew run` from the command line
+Just run `./gradlew run` from the command line
 
-== Create Distribution ==
+## Create Distribution:
 
 You can either use OneJar to create a Fat Jar by running `./gradlew oneJar` or you can run `./gradlew distZip` to create an application zip file
