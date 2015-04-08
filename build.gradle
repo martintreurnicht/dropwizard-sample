@@ -10,3 +10,7 @@ dependencies {
 	compile "io.dropwizard:dropwizard-core:$versions.dropwizard"
 	compile 'org.mongodb.morphia:morphia:0.111'
 }
+
+task wrapper(type: Wrapper) {
+	gradleVersion = "2.3"
+}
