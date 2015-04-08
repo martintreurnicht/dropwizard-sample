@@ -1,1 +1,3 @@
-# dropwizard-sample
+=== Dropwizard Sample ===
+
+http://www.dropwizard.io
