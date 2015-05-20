@@ -1,18 +1,26 @@
 package com.github.martintreurnicht.configuration;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
-import org.hibernate.validator.constraints.NotEmpty;
 
 public class SampleConfiguration extends Configuration {
 
-	@JsonProperty
-	@NotEmpty
+//	@JsonProperty
+//	@NotEmpty
 	private String template;
 
-	@JsonProperty
-	@NotEmpty
+//	@JsonProperty
 	private String defaultName = "Stranger";
+
+//	@JsonProperty
+	private Derp test;
+
+	public Derp getTest() {
+		return test;
+	}
+
+	public void setTest(final Derp test) {
+		this.test = test;
+	}
 
 	public String getTemplate() {
 		return template;
@@ -28,5 +36,17 @@ public class SampleConfiguration extends Configuration {
 
 	public void setDefaultName(final String defaultName) {
 		this.defaultName = defaultName;
+	}
+
+	public static class Derp {
+		private String derp;
+
+		public String getDerp() {
+			return derp;
+		}
+
+		public void setDerp(final String derp) {
+			this.derp = derp;
+		}
 	}
 }

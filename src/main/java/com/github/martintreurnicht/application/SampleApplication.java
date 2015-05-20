@@ -1,5 +1,6 @@
 package com.github.martintreurnicht.application;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.github.martintreurnicht.SampleHealth;
 import com.github.martintreurnicht.configuration.SampleConfiguration;
 import com.github.martintreurnicht.service.SampleResource;
@@ -14,6 +15,8 @@ public class SampleApplication extends Application<SampleConfiguration>{
 
 	@Override
 	public void run(final SampleConfiguration configuration, final Environment environment) throws Exception {
+		environment.getObjectMapper().disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
+		configuration.getTest().getDerp();
 		SampleResource resource = new SampleResource(configuration.getTemplate(), configuration.getDefaultName());
 		environment.jersey().register(resource);
 		SampleHealth health = new SampleHealth(configuration.getTemplate());

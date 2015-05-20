@@ -1,22 +1,22 @@
 apply plugin: 'java'
-apply plugin: 'gradle-one-jar'
+apply plugin: 'eu.appsatori.fatjar'
 apply plugin: 'application'
 
 ext.versions = [ 'dropwizard' : '0.8.1']
 
-sourceCompatibility = '1.7'
-targetCompatibility = '1.7'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 // The main class of the application
 mainClassName = 'com.github.martintreurnicht.application.SampleApplication'
 
 buildscript {
 	repositories {
-		mavenCentral()
+		jcenter()
 	}
 
 	dependencies {
-		classpath 'com.github.rholder:gradle-one-jar:1.0.3'
+		classpath 'eu.appsatori:gradle-fatjar-plugin:0.3'
 	}
 }
 
@@ -26,15 +26,17 @@ repositories {
 
 dependencies {
 	compile "io.dropwizard:dropwizard-core:$versions.dropwizard"
-	compile 'org.mongodb.morphia:morphia:0.111'
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = "2.3"
+	gradleVersion = "2.4"
 }
 
-task oneJar(type: OneJar) {
-	mainClass = mainClassName
+fatJar {
+	exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA'
+	manifest {
+		attributes 'Main-Class': mainClassName
+	}
 }
 
 // Configure the run task to start the Dropwizard service
@@ -44,5 +46,5 @@ run {
 }
 
 artifacts {
-	oneJar
+	fatJar
 }
