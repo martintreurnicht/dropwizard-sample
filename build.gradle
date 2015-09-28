@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eu.appsatori.fatjar'
 apply plugin: 'application'
 
-ext.versions = [ 'dropwizard' : '0.8.1']
+ext.versions = [ 'dropwizard' : '0.9.0-rc4']
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -29,7 +29,7 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-	gradleVersion = "2.4"
+	gradleVersion = "2.7"
 }
 
 fatJar {
